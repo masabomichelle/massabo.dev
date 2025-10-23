@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masabo Michelle - Expanded Student Portfolio</title>
+    <!-- Load Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind for custom colors and use Inter font -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class', // Enables dark mode based on the 'dark' class on the root element
+            theme: {
+                extend: {
+                    colors: {
+                        // Black and White/Gray Palette
+                        'primary-dark': '#0A0A0A', // Deep Black/Charcoal for background
+                        'secondary-dark': '#1A1A1A', // Darker Card Background
+
+                        // Pink Accent Colors (Revised for baby pink visibility and contrast)
+                        'accent': '#F472B6', // NEW: Pink 400 (Soft, but ensures contrast for text on light backgrounds)
+                        'accent-dark': '#DB2777', // NEW: Pink 600 (Deeper Pink for hover/shadow)
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <!-- Load Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Custom scrollbar for aesthetics in dark mode, using the new Pink */
+        body::-webkit-scrollbar {
+            width: 8px;
+        }
+        body::-webkit-scrollbar-track {
+            background: #0A0A0A;
+        }
+        body::-webkit-scrollbar-thumb {
+            /* Updated to new, baby pink accent color */
+            background: #F472B6;
+            border-radius: 4px;
+        }
+        /* Smooth scrolling behavior for navigation */
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Style for the button, adding a subtle touch */
+        .cta-button {
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            /* Use the darker baby pink for the shadow - Updated to new color */
+            transform: translateY(-2px);
+            /* RGB for #DB2777 is 219, 39, 119 */
+            box-shadow: 0 4px 15px rgba(219, 39, 119, 0.6); 
+        }
+    </style>
+</head>
+
+<body class="bg-white dark:bg-primary-dark text-gray-800 dark:text-gray-100 font-sans transition-colors duration-500" data-theme="dark">
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 bg-white/90 dark:bg-primary-dark/90 backdrop-blur-sm shadow-md transition-colors duration-500">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#home" class="text-2xl font-bold text-accent hover:text-accent-dark transition-colors">Masabo.dev</a>
+                </div>
+                <div class="flex items-center">
+                    <!-- Desktop Nav Links -->
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <a href="#about" class="nav-link">About</a>
+                            <a href="#education" class="nav-link">Education</a>
+                            <a href="#skills" class="nav-link">Skills</a>
+                            <a href="#projects" class="nav-link">Projects</a>
+                            <a href="#thoughts" class="nav-link">Log</a>
+                            <a href="#contact" class="nav-link">Contact</a>
+                        </div>
+                    </div>
+
+                    <!-- Dark Mode Toggle -->
+                    <button id="theme-toggle" class="p-2 ml-4 rounded-full bg-gray-100 dark:bg-secondary-dark hover:ring-2 ring-accent transition-all duration-300">
+                        <!-- Icon will be set by JavaScript -->
+                    </button>
+
+                    <!-- Mobile Menu Button -->
+                    <button id="menu-button" type="button" class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-300" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <i data-lucide="menu" id="menu-icon" class="h-6 w-6"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 in-center">
+                <a href="#about" class="mobile-nav-link">About</a>
+                <a href="#education" class="mobile-nav-link">Education</a>
+                <a href="#skills" class="mobile-nav-link">Skills</a>
+                <a href="#projects" class="mobile-nav-link">Projects</a>
+                <a href="#thoughts" class="mobile-nav-link">Log</a>
+                <a href="#contact" class="mobile-nav-link">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32 min-h-screen flex items-center">
+            <div class="text-center md:text-left md:grid md:grid-cols-3 md:gap-8 items-center">
+                <div class="md:col-span-2">
+                    <p class="text-lg text-accent font-semibold mb-3">Hey there! I'm</p>
+                    <h1 class="text-5xl sm:text-7xl font-extrabold leading-tight tracking-tight">
+                        Masabo <span class="text-accent">Michelle</span>.
+                    </h1>
+                    <h2 class="text-2xl sm:text-4xl font-light mt-2 mb-6 text-gray-500 dark:text-gray-400">
+                        **Just a student coding and figuring things out.**
+                    </h2>
+                    <p class="max-w-xl text-lg mb-8">
+                        Welcome to my first official portfolio! I'm excited about taking simple ideas and turning them into digital projects using **HTML, CSS, and JavaScript**. This site is a showcase of my journey—it's still a work in progress, just like me!
+                    </p>
+                    <div class="flex justify-center md:justify-start space-x-4">
+                        <a href="#projects" class="cta-button bg-accent text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-accent-dark transition-colors duration-300">
+                            See My Projects
+                        </a>
+                        <a href="#skills" class="cta-button border border-accent text-accent font-bold py-3 px-8 rounded-lg hover:bg-accent/10 transition-colors duration-300">
+                            What I'm Learning
+                        </a>
+                    </div>
+                </div>
+                <!-- Profile Image Placeholder -->
+                <div class="hidden md:flex md:col-span-1 justify-center mt-10 md:mt-0">
+                    <div class="w-64 h-64 bg-secondary-dark border-4 border-accent rounded-full flex items-center justify-center shadow-2xl">
+                        <i data-lucide="graduation-cap" class="w-24 h-24 text-accent/50"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 bg-secondary-dark/5 dark:bg-secondary-dark/20 transition-colors duration-500">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="section-title">About Me & My Goals</h2>
+                <div class="lg:grid lg:grid-cols-3 lg:gap-12 items-start">
+                    <div class="lg:col-span-2 space-y-6 text-lg">
+                        <p>
+                            I'm Masabo, and I'm currently a student exploring the exciting world of front-end development. My goal is simple: I want to build things that work, look good, and don't break! I'm learning that even the smallest projects teach you the biggest lessons.
+                        </p>
+                        <p>
+                            Lately, I've been wrestling with CSS layouts (Flexbox is still challenging!) and getting really into adding interactivity using pure **JavaScript**. It's tough sometimes, but it's incredibly rewarding when a feature finally clicks and works the way I planned. I love applying what I learn immediately.
+                        </p>
+                        <p class="font-semibold text-accent">
+                            My long-term goal is to move beyond the basics and eventually learn a modern framework like React. I'm always open to feedback—I know I have a lot to learn!
+                        </p>
+                    </div>
+                    <div class="lg:col-span-1 mt-10 lg:mt-0">
+                        <h3 class="text-2xl font-bold mb-4 border-b-2 border-accent pb-2">My Current Focus</h3>
+                        <ul class="space-y-3 text-base list-none">
+                            <li class="flex items-center"><i data-lucide="book-open" class="w-5 h-5 mr-2 text-accent"></i> Mastering core HTML structure.</li>
+                            <li class="flex items-center"><i data-lucide="paintbrush" class="w-5 h-5 mr-2 text-accent"></i> **Figuring out how to make truly responsive layouts** with CSS3.</li>
+                            <li class="flex items-center"><i data-lucide="play" class="w-5 h-5 mr-2 text-accent"></i> Building basic JavaScript games.</li>
+                            <li class="flex items-center"><i data-lucide="git-pull-request" class="w-5 h-5 mr-2 text-accent"></i> Practicing GitHub workflows (committing/branching).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- NEW SECTION: Education -->
+        <section id="education" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="section-title">My Education</h2>
+                <div class="max-w-4xl mx-auto space-y-8">
+                    <!-- School/College Entry -->
+                    <div class="bg-secondary-dark/5 dark:bg-secondary-dark/50 p-6 rounded-xl shadow-lg border-l-4 border-accent">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-xl font-bold">High School / Secondary School</h3>
+                            <span class="text-sm text-gray-500 dark:text-gray-400">Current</span>
+                        </div>
+                        <p class="text-lg text-gray-700 dark:text-gray-300">City Name, Country</p>
+                        <p class="mt-3">
+                            Currently focused on **Science** and **Mathematics** subjects, which greatly help in developing problem-solving skills necessary for coding. Actively participating in the school's **Tech Club** when I can!
+                        </p>
+                    </div>
+
+                    <!-- Online Learning Entry -->
+                    <div class="bg-secondary-dark/5 dark:bg-secondary-dark/50 p-6 rounded-xl shadow-lg border-l-4 border-accent">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-xl font-bold">Online Web Development Courses</h3>
+                            <span class="text-sm text-gray-500 dark:text-gray-400">Ongoing</span>
+                        </div>
+                        <p class="text-lg text-gray-700 dark:text-gray-300">Platform Name (e.g., FreeCodeCamp, Coursera)</p>
+                        <p class="mt-3">
+                            Completed foundational tracks in **Responsive Web Design** and **JavaScript Basics**. Applying concepts from these courses directly into portfolio projects.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 bg-secondary-dark/5 dark:bg-secondary-dark/20 transition-colors duration-500">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="section-title">My Learning Tools</h2>
+                <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-4 gap-6">
+                    <!-- Skill Card 1: HTML -->
+                    <div class="skill-card">
+                        <i data-lucide="code" class="skill-icon text-orange-600"></i>
+                        <span class="mt-2 text-sm">HTML</span>
+                    </div>
+                    <!-- Skill Card 2: CSS3 -->
+                    <div class="skill-card">
+                        <i data-lucide="zap" class="skill-icon text-accent"></i>
+                        <span class="mt-2 text-sm">CSS3</span>
+                    </div>
+                    <!-- Skill Card 3: JavaScript -->
+                    <div class="skill-card">
+                        <i data-lucide="layout-grid" class="skill-icon text-yellow-500"></i>
+                        <span class="mt-2 text-sm">JavaScript</span>
+                    </div>
+                    <!-- Skill Card 4: GitHub -->
+                    <div class="skill-card">
+                        <i data-lucide="github" class="skill-icon text-gray-800 dark:text-gray-200"></i>
+                        <span class="mt-2 text-sm">GitHub</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section (Now 6 Cards) -->
+        <section id="projects" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="section-title">My Projects & Practice</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                    <!-- Project Card 1: To-Do List -->
+                    <div class="project-card">
+                        <div class="project-placeholder">
+                            <i data-lucide="list-checks" class="w-12 h-12 text-accent"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mt-4">1. To-Do List Application</h3>
+                        <p class="text-gray-500 dark:text-gray-400 mt-2 line-clamp-3">
+                            A classic project demonstrating **DOM manipulation**, event listeners, and local storage to save tasks between visits.
+                        </p>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                        <div class="mt-4 flex space-x-4">
+                            <a href="#" class="project-link">View Demo <i data-lucide="external-link" class="w-4 h-4 ml-1"></i></a>
+                            <a href="#" class="project-link">Source Code <i data-lucide="github" class="w-4 h-4 ml-1"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 2: Simple Calculator -->
+                    <div class="project-card">
+                        <div class="project-placeholder">
+                            <i data-lucide="calculator" class="w-12 h-12 text-accent"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mt-4">2. Basic Arithmetic Calculator</h3>
+                        <p class="text-gray-500 dark:text-gray-400 mt-2 line-clamp-3">
+                            Built with JavaScript logic to handle addition, subtraction, multiplication, and division. Focuses on function creation and user input processing.
+                        </p>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">HTML</span>
+                        </div>
+                        <div class="mt-4 flex space-x-4">
+                            <a href="#" class="project-link">View Demo <i data-lucide="external-link" class="w-4 h-4 ml-1"></i></a>
+                            <a href="#" class="project-link">Source Code <i data-lucide="github" class="w-4 h-4 ml-1"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 3: Photo Gallery -->
+                    <div class="project-card">
+                        <div class="project-placeholder">
+                            <i data-lucide="gallery-vertical" class="w-12 h-12 text-accent"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mt-4">3. Responsive Photo Gallery</h3>
+                        <p class="text-gray-500 dark:text-gray-400 mt-2 line-clamp-3">
+                            Practice in creating dynamic and mobile-friendly layouts using CSS Grid and Flexbox, complete with image captions and modal viewing.
+                        </p>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">HTML</span>
+                        </div>
+                        <div class="mt-4 flex space-x-4">
+                            <a href="#" class="project-link">View Demo <i data-lucide="external-link" class="w-4 h-4 ml-1"></i></a>
+                            <a href="#" class="project-link">Source Code <i data-lucide="github" class="w-4 h-4 ml-1"></i></a>
+                        </div>
+                    </div>
+                    
+                    <!-- Project Card 4: Quiz App (New) -->
+                    <div class="project-card">
+                        <div class="project-placeholder">
+                            <i data-lucide="graduation-cap" class="w-12 h-12 text-accent"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mt-4">4. Simple Quiz Application</h3>
+                        <p class="text-gray-500 dark:text-gray-400 mt-2 line-clamp-3">
+                            A small app that presents questions and scores the user. Good practice for using arrays, loops, and conditional logic in JavaScript.
+                        </p>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">HTML</span>
+                        </div>
+                        <div class="mt-4 flex space-x-4">
+                            <a href="#" class="project-link">View Demo <i data-lucide="external-link" class="w-4 h-4 ml-1"></i></a>
+                            <a href="#" class="project-link">Source Code <i data-lucide="github" class="w-4 h-4 ml-1"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 5: Landing Page Clone (New) -->
+                    <div class="project-card">
+                        <div class="project-placeholder">
+                            <i data-lucide="airplay" class="w-12 h-12 text-accent"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mt-4">5. Recreated Landing Page</h3>
+                        <p class="text-gray-500 dark:text-gray-400 mt-2 line-clamp-3">
+                            An exercise in cloning a well-designed website's landing page to practice pixel-perfect styling, navigation, and visual hierarchy using pure **CSS3**.
+                        </p>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">HTML Structure</span>
+                        </div>
+                        <div class="mt-4 flex space-x-4">
+                            <a href="#" class="project-link">View Demo <i data-lucide="external-link" class="w-4 h-4 ml-1"></i></a>
+                            <a href="#" class="project-link">Source Code <i data-lucide="github" class="w-4 h-4 ml-1"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 6: Time/Clock App (New) -->
+                    <div class="project-card">
+                        <div class="project-placeholder">
+                            <i data-lucide="clock" class="w-12 h-12 text-accent"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mt-4">6. Digital Clock & Timer</h3>
+                        <p class="text-gray-500 dark:text-gray-400 mt-2 line-clamp-3">
+                            A time-based application using JavaScript's `Date` object and `setInterval` function to display time and potentially run a simple countdown timer.
+                        </p>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">DOM Update</span>
+                        </div>
+                        <div class="mt-4 flex space-x-4">
+                            <a href="#" class="project-link">View Demo <i data-lucide="external-link" class="w-4 h-4 ml-1"></i></a>
+                            <a href="#" class="project-link">Source Code <i data-lucide="github" class="w-4 h-4 ml-1"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        
+        <!-- NEW SECTION: Learning Log -->
+        <section id="thoughts" class="py-20 bg-secondary-dark/5 dark:bg-secondary-dark/20 transition-colors duration-500">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="section-title">Latest Thoughts & Learning Log</h2>
+                <div class="max-w-4xl mx-auto space-y-6">
+                    <!-- Log Entry 1 -->
+                    <article class="p-6 rounded-xl bg-white dark:bg-secondary-dark/50 shadow-lg border-l-4 border-accent">
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">October 23, 2025 | Topic: CSS Layout</p>
+                        <h3 class="text-xl font-bold mb-2">Why I Finally Understand `space-between` (It's a Game-Changer!)</h3>
+                        <p>
+                            I had a major CSS breakthrough today! I was struggling with my navigation bar until I truly figured out how **Flexbox**'s `justify-content: space-between` works. Seriously, it's a huge difference from `space-around`. My Photo Gallery project now looks way cleaner. It only took 4 hours of debugging, lol.
+                        </p>
+                    </article>
+
+                    <!-- Log Entry 2 -->
+                    <article class="p-6 rounded-xl bg-white dark:bg-secondary-dark/50 shadow-lg border-l-4 border-accent">
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">October 15, 2025 | Topic: JavaScript Debugging</p>
+                        <h3 class="text-xl font-bold mb-2">Debugging: My New Best Friend is `console.log()`</h3>
+                        <p>
+                            I wasted a whole afternoon on my calculator app because I mixed up two variable names. Two hours! I realized that debugging isn't just about fixing code, it's about being a detective. Now I put **`console.log()`** everywhere. It's brutal when things break, but I actually felt amazing when I found that tiny mistake.
+                        </p>
+                    </article>
+                    
+                    <div class="text-center pt-8">
+                        <p class="text-lg text-gray-600 dark:text-gray-300">
+                            This section is where I'll keep track of things I learn. You can show your growth here!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="text-center space-y-6">
+                <p class="text-xl max-w-2xl mx-auto text-gray-600 dark:text-gray-300">
+                    I'm actively seeking mentorship, connections, and advice on my coding journey! If you have any feedback on my projects or are willing to share knowledge, please reach out.
+                </p>
+                <!-- Simple Contact Button (replace with your email) -->
+                <a href="mailto:masabomichelle2@gmaiil.com" class="cta-button bg-accent text-white font-bold py-4 px-10 text-lg rounded-lg shadow-xl hover:bg-accent-dark transition-colors duration-300 inline-flex items-center">
+                    <i data-lucide="mail" class="w-6 h-6 mr-2"></i> Email Me
+                </a>
+                <p class="pt-4 text-sm text-gray-500 dark:text-gray-400">
+                    My email: <span class="font-semibold text-accent">masabomichelle2@gmaiil.com</span>
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-secondary-dark dark:bg-secondary-dark/80 border-t border-accent/10 transition-colors duration-500">
+        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-gray-400 text-sm mb-4">
+                Designed and Built by Masabo Michelle | &copy; 2025
+            </p>
+            <div class="flex justify-center space-x-6">
+                <!-- Social Icons (Replace # with your links) -->
+                <a href="#" target="_blank" aria-label="GitHub" class="text-gray-400 hover:text-accent transition-colors duration-300">
+                    <i data-lucide="github" class="w-6 h-6"></i>
+                </a>
+                <a href="#" target="_blank" aria-label="LinkedIn" class="text-gray-400 hover:text-accent transition-colors duration-300">
+                    <i data-lucide="linkedin" class="w-6 h-6"></i>
+                </a>
+                <a href="#" target="_blank" aria-label="Twitter" class="text-gray-400 hover:text-accent transition-colors duration-300">
+                    <i data-lucide="twitter" class="w-6 h-6"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Mobile Menu and Dark Mode Toggle -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Utility classes for easy access
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuButton = document.getElementById('menu-button');
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+
+        // --- 1. Mobile Menu Logic ---
+        menuButton.addEventListener('click', () => {
+            const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+            menuButton.setAttribute('aria-expanded', !isExpanded);
+            mobileMenu.classList.toggle('hidden');
+
+            const menuIcon = document.getElementById('menu-icon');
+            if (!isExpanded) {
+                // Change to close icon
+                menuIcon.setAttribute('data-lucide', 'x');
+            } else {
+                // Change to menu icon
+                menuIcon.setAttribute('data-lucide', 'menu');
+            }
+            // Re-render Lucide icons after changing the attribute
+            lucide.createIcons();
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuButton.setAttribute('aria-expanded', 'false');
+                document.getElementById('menu-icon').setAttribute('data-lucide', 'menu');
+                lucide.createIcons();
+            });
+        });
+
+
+        // --- 2. Dark/Light Mode Logic ---
+
+        // Function to set the theme
+        function setTheme(theme) {
+            if (theme === 'dark') {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                themeToggle.innerHTML = '<i data-lucide="sun" class="w-5 h-5 text-yellow-400"></i>';
+            } else {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                themeToggle.innerHTML = '<i data-lucide="moon" class="w-5 h-5 text-gray-700"></i>';
+            }
+            lucide.createIcons(); // Re-render icons
+        }
+
+        // Initialize theme based on localStorage or OS preference
+        const storedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (storedTheme) {
+            setTheme(storedTheme);
+        } else if (prefersDark) {
+            setTheme('dark');
+        } else {
+            setTheme('light');
+        }
+
+        // Toggle theme on button click
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.classList.contains('dark') ? 'dark' : 'light';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            setTheme(newTheme);
+        });
+
+    </script>
+
+    <!-- Tailwind Component Styling -->
+    <style>
+        .nav-link {
+            @apply text-base font-medium py-2 px-3 rounded-md transition-all duration-300
+            hover:bg-accent/10 dark:hover:bg-accent/10 hover:text-accent dark:hover:text-accent
+            text-gray-600 dark:text-gray-300;
+        }
+        .mobile-nav-link {
+            @apply block px-3 py-2 rounded-md text-base font-medium
+            text-gray-700 dark:text-gray-200 hover:bg-accent/10 hover:text-accent transition-colors duration-300;
+        }
+        .section-title {
+            @apply text-3xl sm:text-4xl font-extrabold mb-12 text-center relative pb-3
+            after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-20 after:h-1 after:bg-accent after:rounded-full;
+        }
+        .skill-card {
+            @apply flex flex-col items-center justify-center p-6 rounded-xl border border-gray-200 dark:border-secondary-dark
+            bg-white dark:bg-secondary-dark/50 shadow-lg hover:shadow-2xl hover:border-accent transition-all duration-300 cursor-pointer;
+        }
+        .skill-icon {
+            @apply w-10 h-10;
+        }
+        .project-card {
+            @apply p-6 rounded-xl bg-white dark:bg-secondary-dark/50 shadow-xl hover:shadow-2xl hover:ring-2 ring-accent transition-all duration-500 flex flex-col;
+        }
+        .project-placeholder {
+            @apply w-full h-40 bg-gray-100 dark:bg-primary-dark/50 rounded-lg mb-4 flex items-center justify-center;
+        }
+        .tech-tag {
+            /* Using a light pink Tailwind class for the background and the accent color for text */
+            @apply text-xs font-semibold px-3 py-1 bg-pink-100 dark:bg-accent/20 text-accent rounded-full;
+        }
+        .project-link {
+            @apply text-sm font-medium text-accent hover:text-accent-dark transition-colors duration-300 flex items-center;
+        }
+    </style>
+</body>
+</html>
